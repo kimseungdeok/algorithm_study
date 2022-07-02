@@ -9,7 +9,6 @@ function solution(absolutes, signs) {
         else {
             realNum.push(absolutes[i]);
         }
-        console.log(realNum);
         answer += realNum[i];
     }
     
