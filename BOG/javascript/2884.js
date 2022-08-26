@@ -1,5 +1,5 @@
 // testCase = require('fs').readFileSync('./dev/stdin').toString().trim()
-testCase = require('fs').readFileSync('예제.txt').toString().trim()
+testCase = require('fs').readFileSync('example.txt').toString().trim()
 
 const [hour, minute] = testCase.split(' ').map(Number)
 
