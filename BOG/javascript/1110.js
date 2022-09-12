@@ -3,22 +3,24 @@
 // 2.1. 그리고 새로운 수를 만듦(더한 결과의 첫째자리와 이전의 첫째 자리)
 // 3. 계속 반복
 
-// let input = require('fs').readFileSync('example.txt').toString()
-let input = require('fs').readFileSync('/dev/stdin').toString();
-let result = Number(input);
+let input = require('fs').readFileSync('example.txt').toString()
+// let input = require('fs').readFileSync('/dev/stdin').toString();
+
 let count = 0;
 
-// if(Number(input)<10){
+if(Number(input) < 10){
+    input = '0' + input;
+}
 
+let result = input;
 
 do{
-    if(parseInt(result / 10) + result % 10 < 10){
-        result = (result % 10) * 10 + parseInt(result / 10) + result % 10
+    if(Number(result[0]) + Number(result[1]) < 10){
+        result = result[1] + String(Number(result[0]) + Number(result[1]))
     }else {
-        result = (result % 10) * 10 + (parseInt(result / 10) + result % 10) % 10
+        result = result[1] + String(Number(result[0]) + Number(result[1]))[1]
     }
     count++
 }while(input != result)
 
 console.log(count)
-
