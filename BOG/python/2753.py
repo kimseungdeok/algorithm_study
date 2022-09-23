@@ -1,6 +1,14 @@
-year = int(input())
+import sys
+sys.stdin = open('example.txt', 'r')
 
-if year%4==0 and year%100!=0 or year%400==0 :
-    print(1)
+input = int(input())
+
+if input%4 == 0:
+    if input%100 != 0 or input%400 ==0:
+        print('1')
+    else:
+        print('0')
 else:
-    print(0)
+    print('0')
+
+

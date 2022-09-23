@@ -1,14 +1,14 @@
-A = int(input())
-B = int(input())
+import sys
+sys.stdin = open('example.txt', 'r')
 
-b = []
-for i in str(B):
-    b.append(i)
-# https://go-hard.tistory.com/96
+input = sys.stdin.read().splitlines()
 
-# print(int(b[0]))
+firstNum = int(input[0])
+secondNum = int(input[1])
+secondNums = list(input[1]) # 두번째 숫자를 나누어서 배열로 만듦
 
-print(A * int(b[2]))
-print(A * int(b[1]))
-print(A * int(b[0]))
-print(A * B)
+print(firstNum * int(secondNums[2]))
+print(firstNum * int(secondNums[0]))
+print(firstNum * int(secondNums[1]))
+print(firstNum * secondNum)
+
