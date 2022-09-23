@@ -2,22 +2,28 @@ import sys
 
 sys.stdin = open('example.txt', 'r')
 
-input = sys.stdin.read().split('\n')
+input = sys.stdin.read().splitlines()
 print(input)
 
 testcase = int(input[0])
 
-    
+input.pop(0)
+
 for value in input:
-    sum = 0
-    arr = value.split(' ')
-    count = 0
-    print(arr)
+    arr = value.splitlines()
     for value in arr:
-        sum += int(value)
-    average = (sum - int(arr[0]))/(len(arr))
-    for value in arr:
-        # print(average)
-        if average > int(value):
-            count += 1
-        print(average/len(value))
+        sum = 0
+        count = 0
+        item = list(map(int, value.split(' ')))
+        item.pop(0)
+        for value in item:
+            sum += value
+        average = sum/len(item)
+        
+        for value in item:
+            if(average < value):
+                count += 1
+
+        answer = count/len(item) * 100
+        print(str(format(answer, ".3f"))+'%')
+        
