@@ -1,6 +1,8 @@
-input_num = int(input())
-# num_list = [1,2,3,4,5,6,7,8,9]
+import sys
 
-for i in range(1,10):
-    print(input_num,"*",i,"=",input_num*i)
-    # print(i)
+sys.stdin = open('example.txt', 'r')
+
+num = int(input())
+
+for x in range(9):
+    print(num, '*', x+1, '=', num*(x+1))
