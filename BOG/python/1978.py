@@ -15,15 +15,30 @@ input.pop(0)
 # 변수 이름을 직관적으로 설정해주기위해 이렇게 새로운 변수에 할당해주었다.
 nums = list(map(int, input))
 # print(nums)
+count = 0
 
 # 두번째 줄을 배열로 만든것을 순회함
 for num in nums:
-    # nums의 각 요소보다 작은 수로 나누기 위해 새로운 배열을 만듦
-    divideArr = list(range(1, num+1))
-    print(divideArr)
-    # for i in divideArr:
-    #     if num % i == 0:
-            
+    if num == 1:
+        continue
+    else:
+        # nums의 각 요소보다 작은 수로 나누기 위해 새로운 배열을 만듦
+        divideArr = list(range(2, num))
+        # print(divideArr)
+        # 나누어졌는지 확인하는 배열
+        isDivided = []
+        for i in divideArr:
+            if num % i == 0:
+                isDivided.append(True)
+            else:
+                isDivided.append(False)
+            # print(isDivided)
+        if(True in isDivided):
+            continue
+        else:
+            count += 1
 
+                
+print(count)
+                
 
-# print(nums)
