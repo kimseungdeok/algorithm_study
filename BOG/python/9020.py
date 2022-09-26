@@ -15,6 +15,8 @@ testCases = int(input)
 # print(input)
 
 def isPrimeNumber(num):
+    if num == 1:
+        return False
     for i in range(2, int(math.sqrt(num))+1):
         if num % i ==0:
             return False
@@ -22,19 +24,15 @@ def isPrimeNumber(num):
 
 
 for _ in range(testCases): # testCase만큼 순회만 함
-    case = int(sys.stdin.readline().strip()) # 각각의 케이스를 
+    case = int(sys.stdin.readline().strip()) 
     # print(case)
-    caseArr = []
-    for i in range(int(case/2)):
-        # print(case/2 -i, case/2 +i)
-        if isPrimeNumber(case/2):
-            caseArr.append(int(case/2))
-            caseArr.append(int(case/2))
-        elif isPrimeNumber(case/2 -i) and isPrimeNumber(case/2 +i):
-            caseArr.append(int(case/2 -i))
-            caseArr.append(int(case/2 +i))
-
-    print(*caseArr[0:2])
-
-
-
+    # caseArr = []
+    a, b = case//2, case//2
+    # print(a,b)
+    while a > 0:
+        if isPrimeNumber(a) and isPrimeNumber(b):
+            print(a, b)
+            break
+        else:
+            a -= 1
+            b += 1
