@@ -1,0 +1,31 @@
+from sys import stdin
+
+stdin = open('example.txt', 'r')
+
+inputNum = int(stdin.readline().strip())
+answer = []
+
+for _ in range(inputNum):
+    input = stdin.readline().strip().split()
+    # print(input)
+    if input[0] == 'push':
+        answer.insert(0, input[1])
+    elif input[0] == 'pop':
+        if len(answer) > 0:
+            print(answer[0])
+            answer.pop(0)
+        else :
+            print(-1)
+    elif input[0] == 'size':
+        print(len(answer))
+    elif input[0] == 'empty':
+        if len(answer) == 0:
+            print(1)
+        else :
+            print(0)
+    elif input[0] == 'top':
+        if len(answer) > 0:
+            print(answer[0])
+        else :
+            print(-1)
+    
