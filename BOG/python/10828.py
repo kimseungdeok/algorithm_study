@@ -9,11 +9,11 @@ for _ in range(inputNum):
     input = stdin.readline().strip().split()
     # print(input)
     if input[0] == 'push':
-        answer.insert(0, input[1])
+        answer.append(input[1])
     elif input[0] == 'pop':
         if len(answer) > 0:
-            print(answer[0])
-            answer.pop(0)
+            print(answer[len(answer)-1])
+            answer.pop(len(answer)-1)
         else :
             print(-1)
     elif input[0] == 'size':
@@ -25,7 +25,7 @@ for _ in range(inputNum):
             print(0)
     elif input[0] == 'top':
         if len(answer) > 0:
-            print(answer[0])
+            print(answer[len(answer)-1])
         else :
             print(-1)
     
