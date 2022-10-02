@@ -1,30 +1,25 @@
 from sys import stdin
-from unittest import TestCase
 
 stdin = open('example.txt', 'r')
 
 testCase = int(stdin.readline().strip())
 
+answer = []
+
 for _ in range(testCase):
-    vps = list(stdin.readline().strip())
-    openCount = 0
-    closeCount = 0
-    if vps[0] == '(' and vps[len(vps)-1] == ')':
-        vps.pop(0)
-        vps.pop(len(vps)-1)
-        for i in range(len(vps)):
-            # print(i)
-            if vps[i] == '(':
-                openCount += 1
-            elif vps[i] == ')':
-                closeCount += 1
-        # print(openCount, closeCount)
-        if openCount == closeCount:
-            print("YES")
+    answer.clear()
+    flag = 0
+    line = stdin.readline().strip()
+    for each in line:
+        if each == "(":
+            answer.append(each)
         else:
-            print("NO")
-    else : 
-        print("NO")
-            
-            
-            
+            try:
+                answer.pop()
+            except:
+                flag = 1
+                break
+    if len(answer) == 0 and flag==0:
+        print('YES') 
+    else:
+        print('NO')
