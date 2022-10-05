@@ -1,35 +1,39 @@
 from sys import stdin
 
 stdin = open('example.txt', 'r')
-
 N, B = map(int, stdin.readline().strip().split())
-A = [list(map(int, stdin.readline().strip().split())) for _ in range(N)]
+matrix = [list(map(int, stdin.readline().strip().split())) for _ in range(N)]
 
-def mul(U, V):
-    n = len(U)
-    Z = [[0]*n for _ in range(n)]
+# [[1, 2], [3, 4]]
 
-    for row in range(n):
-        for col in range(n):
-            e = 0
-            for i in range(n):
-                e += U[row][i] * V[i][col]
-            Z[row][col] = e % 1000
-    return Z
+def matrix_mul(a,b):
+    temp = [[0] * N for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                temp[i][j] += a[i][k] * b[k][j]
+        
+    for i in range(N):
+        for j in range(N):
+            temp[i][j] %= 1000
 
-def square(A, B):
+    return temp
+
+def DoC(B, matrix):
     if B == 1:
-        for x in range(len(A)):
-            for y in range(len(A)):
-                A[x][y] %= 1000
-            return A
-
-        tmp = square(A, B//2)
+        return matrix
+    elif B == 2:
+        return matrix_mul(matrix, matrix)
+    else:
+        tmp=DoC(B//2, matrix)
+        # 홀수이면
         if B % 2:
-            return mul(mul(tmp, tmp), A)
+            return matrix_mul(matrix_mul(tmp, tmp), matrix)
         else:
-            return mul(tmp, tmp)
+            return matrix_mul(tmp, tmp)
 
-result = square(A, B)
-for r in result:
-    print(*r)
+res = DoC(B, matrix)
+for row in res:
+    for cell in row:
+        print(cell%1000, end=" ")
+    print()
