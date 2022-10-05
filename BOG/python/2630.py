@@ -1,5 +1,15 @@
 from sys import stdin
-import math
+# 예제 입력 1
+# 8
+# 1 1 0 0 0 0 1 1
+# 1 1 0 0 0 0 1 1
+# 0 0 0 0 1 1 0 0
+# 0 0 0 0 1 1 0 0
+# 1 0 0 0 1 1 1 1
+# 0 1 0 0 1 1 1 1
+# 0 0 1 1 1 1 1 1
+# 0 0 1 1 1 1 1 1
+
 
 stdin = open('example.txt', 'r')
 
@@ -16,7 +26,7 @@ def solution(x, y, squareLen):
                 solution(x, y, squareLen//2)
                 solution(x, y+squareLen//2, squareLen//2)
                 solution(x+squareLen//2, y, squareLen//2)
-                solution(x+squareLen//2, y+squareLen+1, squareLen//2)
+                solution(x+squareLen//2, y+squareLen//2, squareLen//2)
                 return
     if color == 0:
         result.append(0)
