@@ -17,7 +17,7 @@ for _ in range(N):
     root, left, right = input().split()
     tree[root] = [left, right]
 
-print(tree)
+# print(tree)
 
 def preorder(root):
     if root != '.':
@@ -37,8 +37,8 @@ def postorder(root):
         postorder(tree[root][1])
         print(root, end='')
 
-# preorder('A')
-# print()
-# inorder('A')
-# print()
-# postorder('A')
+preorder('A')
+print()
+inorder('A')
+print()
+postorder('A')
