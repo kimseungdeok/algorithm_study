@@ -6,16 +6,17 @@ input = stdin.readline
 
 stone = int(input())
 
-# dp = [0] * (stone+1)
+dp = [-1] * (stone+1)
 
-# # 1이 sk, 2가 cy
+# 0이 sk, 1가 cy
 
-# for i in range(3, stone+1):
-#     dp[1] = 1
-#     dp[2] = 2
-
-
-if stone % 2 == 0:
-    print('CY')
-else:
-    print('SK')
+dp[1] = 1
+dp[2] = 0
+dp[3] = 1
+for i in range(4, stone+1):
+    if dp[i-1] or dp[i-3]:
+        dp[i] = 0
+    else:
+        dp[i] = 1
+        
+print('CY' if dp[stone]==0 else'SK')
