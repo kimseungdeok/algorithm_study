@@ -30,7 +30,7 @@ def solution(x, y, squareLen):
                 return
     if color == 0:
         result.append(0)
-    else :
+    elif color == 1:
         result.append(1)
 
 solution(0,0,squareLen)
