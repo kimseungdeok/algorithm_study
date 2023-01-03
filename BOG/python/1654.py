@@ -16,7 +16,6 @@ while start <= end:
     count = 0
     for i in lan:
         count += i // mid
-    print(count)
 
     if count >= n:
         start = mid + 1
