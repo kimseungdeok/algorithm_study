@@ -5,9 +5,9 @@
 
 
 let input = require("fs").readFileSync("example.txt").toString().trim();
-
+input = parseInt(input);
 let num = 2;
-// console.log(num)
+let primeArr = [];
 
 do{
     if(input ===1){
@@ -15,11 +15,13 @@ do{
     }
     if(input%num === 0){
         input = input/num;
-        console.log(num)
+        primeArr.push(num);
     }else {
         num = num + 1
     }
     
 }
 while(true);
+
+console.log(primeArr.join("\n"));
 
