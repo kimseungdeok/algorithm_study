@@ -20,4 +20,3 @@ for (let j = 0; j < answer.length; j++) {
 
 console.log(answer);
 
-Ttest222333344445555666667777788888;
