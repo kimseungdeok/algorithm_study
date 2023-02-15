@@ -1,27 +1,16 @@
 const fs = require("fs");
-const readline = require("readline");
-
 let filepath = process.platform === "linux" ? "/dev/stdin" : "example.txt";
-
-const rl = readline.createInterface({
-  input: fs.createReadStream(filepath),
-  crlfDelay: Infinity,
-});
+let input = fs.readFileSync(filepath).toString().trim();
+input = input.split("\n");
 
 let answer = [];
 
-let lineNum = 0;
+for (let i = 1; i < input.length; i++) {
+  answer.push(...input[i].split(' ').map(Number));
+}
 
-rl.on("line", (line) => {
-  lineNum++;
-  if (lineNum > 1) {
-    answer.push(...line.split(" ").map(Number));
-  }
-});
+answer.sort(function(a,b){
+  return a-b;
+})
 
-rl.on("close", () => {
-  answer.sort(function (a, b) {
-    return a - b;
-  });
-  console.log(answer.join(" "));
-});
+console.log(answer.join(" "));
