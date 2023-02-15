@@ -13,10 +13,16 @@ for (let i = 1; i < input.length; i++) {
 }
 // console.log(answer[0].split(' '))
 
+let r_answer = []
+
 for (let j = 0; j < answer.length; j++) {
   splits = answer[j].split(" ").map(Number);
-  answer[j] = splits;
+  // console.log(splits)
+  r_answer.push(...splits)
+  // answer[j] = splits;
 }
 
-console.log(answer);
-
+r_answer.sort(function(a,b){
+  return a-b;
+})
+console.log(...r_answer);
