@@ -1,21 +1,20 @@
-let answer = 0;
-let babySpeak = ["aya", "ye", "woo", "ma"];
-let babbling = ["aya", "yee", "u", "maa", "wyeoo"];
-
-let babblingLen = babbling.length;
-babySpeak = ["aya", "ye", "woo", "ma"];
-for (let i = 0; i < babblingLen; i++) {
-    babySpeak.forEach((item) => {
-        if (babbling[i].substr(0, item.length) === item) {
-            answer++;
-            console.log(babbling[i].substr(0, item.length));
-            console.log(item);
-            console.log(answer);
-            babbling[i] = babbling[i].substr(item.length);
+function solution(babbling) {
+    var answer = 0;
+    let can = ["aya", "ye", "woo", "ma"];
+  
+    for (let i in babbling) {
+      let init = babbling[i];
+  
+      for (let j in can) {
+        if (babbling[i].includes(can[j])) {
+          init = init.replace(can[j], "X");  // 할 수 있는 단어는 X로 치환
         }
-    });
-}
-
-console.log(answer);
-
-
+      }
+  
+      init = init.replace(/X/gi, "");  // X를 모두 공백으로 치환하고 나서
+      if (init.length === 0) {  // 공백이 되면 answer에 추가
+        answer += 1;
+      }
+    }
+    return answer;
+  }
