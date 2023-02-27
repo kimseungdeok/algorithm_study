@@ -1,20 +1,20 @@
 function solution(n) {
     let answer = 0;
 
-    const numbers = new Array(n + 1).fill(-1);
+    const numbers = new Array(n + 1).fill(true);
 
     for (let i = 2; i <= n; i++) {
-        if (numbers[i] === 0) {
+        if (numbers[i] === false) {
             continue;
         }
 
         for (let k = i + i; k <= n; k += i) {
-            numbers[k] = 0;
+            numbers[k] = false;
         }
     }
 
     for (let i = 2; i <= n; i++) {
-        if (numbers[i] === -1) {
+        if (numbers[i] === true) {
             answer++;
         }
     }
