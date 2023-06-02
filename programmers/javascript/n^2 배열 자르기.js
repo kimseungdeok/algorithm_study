@@ -1,18 +1,10 @@
-function solution(n, left, right) {
-    var answer = [];
-    for(let i = 0; i < n; i++){
-        answer[i] = []
-        for(let j=0; j < n; j++){
-            answer[i].push(j+1)
-        }
-        for(let j=0; j < i+1; j++){
-            answer[i][j] = i+1
-        }
+const solution = (n, left, right) => {
+    const answer = [];
+
+    for (let i = left; i <= right; i++) {
+        const share = parseInt(i / n); // 행축(y)
+        const reminder = i % n; // 열축(x)
+        answer.push(Math.max(share, reminder) + 1);
     }
-    let arr = []
-    answer.forEach((item)=> {
-        arr = arr.concat(item)
-    })
-    arr = arr.slice(left, right+1)
-    return arr;
-}
+    return answer;
+};
