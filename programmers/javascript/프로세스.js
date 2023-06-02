@@ -1,20 +1,20 @@
 function solution(priorities, location) {
-    var answer = [];
-    const priorLen = priorities.length;
-    priorities.forEach((item, index, arr) => {
-        arr[index] = [item, index]
+    let answer = 0;
+    // process와 index값 저장
+    const array = priorities.map((process,index) => {
+      return {process, index};
     })
-    console.log(priorities)
-    
-    for(let i = 0; i < priorLen; i++){
-        let num = priorities.shift()
-        console.log(priorities)
-        if(Math.max(...priorities) > num){
-            priorities.push(num)
-        } else {
-            answer.push(num)
-        }
+  
+    while(array.length){
+      const queue = array.shift();
+      // some 메서드를 사용해서 queue.process 값보다 큰게 있는지 없는지 확인 있으면 push
+      if(array.some((element) => element.process > queue.process)){
+        array.push(queue);
+      }else{
+        // 없으면 answer++ index값이 location이랑 같아지면 break
+        answer++
+        if(queue.index === location) break;
+      }
     }
-    answer = answer.concat(priorities)
     return answer;
-}
+  }
