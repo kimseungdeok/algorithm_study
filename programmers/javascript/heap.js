@@ -1,8 +1,20 @@
 // Learn: 자바스크립트로 힙 구현
 
-class Heap {
+class MinHeap {
     constructor() {
         this.heap = [null]; // 첫 원소는 사용 안함
+    }
+
+    size() {
+        return this.heap.length - 1
+    }
+
+    getMin() {
+        return this.heap[1] ? this.heap[1] : null
+    }
+
+    swap(a, b) {
+        [this.heap[a], this.heap[b]] = [this.heap[b], this.heap[a]];
     }
 
     heappush(value) {
