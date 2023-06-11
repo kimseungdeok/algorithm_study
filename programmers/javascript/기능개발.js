@@ -10,10 +10,10 @@ function solution(progresses, speeds) {
         }
         workDays.push(workDay);
     });
-    console.log(workDays);
+
     let task = 1;
+    let 큰수 = workDays[0];
     workDays.forEach((item, index) => {
-        let 큰수 = workDays[0];
         if (큰수 >= workDays[index + 1]) {
             task += 1;
         } else {
