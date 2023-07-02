@@ -12,19 +12,16 @@ for (let i = 0; i < input.length; i++) {
 }
 
 const diff = sum - 100;
-
+let result;
 for (let i = 0; i < input.length; i++) {
     for (let j = i + 1; j < input.length; j++) {
         if (input[i] + input[j] === diff) {
-            // console.log(i, j)
-            input[i] = 1000;
-            input[j] = 1000;
+            result = input.filter(x => x !== input[i] && x !== input[j])
             break;
         }
     }
+    if(result){
+        break
+    }
 }
-input.sort((a, b) => a - b);
-
-for (let i = 0; i < 7; i++) {
-    console.log(input[i]);
-}
+console.log(result.join("\n"))
