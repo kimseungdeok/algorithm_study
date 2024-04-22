@@ -1,15 +1,26 @@
-// 1. 입력을 받고 입력값을 split을 통해 배열로 만듦
-// 2. 아스키코드를 활용해 새로운 배열에 값을 넣음(숫자 처리를 해주어야함)
-// 3. 배열을 스프레드 문법으로 출력
+const fs = require("fs");
+let filepath = process.platform === "linux" ? "/dev/stdin" : "example.txt";
+let input = fs.readFileSync(filepath).toString().trim();
 
-let input = require('fs').readFileSync('example.txt').toString().trim()
 
-let inputArr = input.split('')
+// 풀이 방법
+// 아스키코드를 활용
+// 1. 주어진 문자열 순회
+// 2. 알파벳 갯수만큼 배열을 만들고, 배열에 -1로 채워넣음
+// 3. 위에 만든 배열에서 문자열 - 97의 위치에 그 문자열의 현재 index를 넣어줌
 
-let answer = []
+const alArr = new Array(26).fill(-1)
 
-inputArr.forEach(item => {
-    answer.push(item.charCodeAt(0)-97)
+input.split("").forEach((item, index) => {
+    if(alArr[item.codePointAt()-97] === -1){
+        alArr[item.codePointAt()-97] = index
+    }
+    
 })
 
-console.log(answer)
+console.log(alArr.join(" "))
+
+
+// 1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 5 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+
+// 1 0 -1 -1 2 -1 -1 -1 -1 4 3 -1 -1 7 6 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
